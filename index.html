@@ -698,6 +698,48 @@ textarea { resize:vertical; min-height:76px; line-height:1.6; font-family:var(--
 .import-actions { padding:0 18px 18px; display:flex; gap:10px; align-items:center; }
 .import-bt-select { flex:1; background:var(--bg3); border:1px solid var(--border2); border-radius:var(--r); padding:9px 12px; color:var(--text); font-family:var(--mono); font-size:11px; outline:none; }
 
+/* PENDIENTES */
+.pend-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:20px; gap:12px; flex-wrap:wrap; }
+.pend-today-card { background:var(--card); border:1px solid var(--border); border-radius:var(--r); box-shadow:var(--sh); margin-bottom:14px; overflow:hidden; }
+.pend-today-head { padding:12px 18px; background:var(--bg3); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.pend-today-body { padding:14px 18px; display:flex; flex-direction:column; gap:8px; }
+.cal-head-bar { display:flex; align-items:center; justify-content:space-between; }
+.cal-nav-btn { width:24px; height:24px; border-radius:4px; border:1px solid var(--border2); background:var(--bg4); color:var(--text2); cursor:pointer; font-size:12px; display:inline-flex; align-items:center; justify-content:center; }
+.cal-nav-btn:hover { border-color:var(--ink); color:var(--ink); }
+.cal-month-label { font-family:var(--mono); font-size:9px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text2); }
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; padding:14px; }
+.cal-dow { font-family:var(--mono); font-size:8px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text3); text-align:center; padding:2px 0 6px; }
+.cal-cell { min-height:50px; border:1px solid var(--border); border-radius:5px; padding:5px; cursor:pointer; transition:all 0.12s; display:flex; flex-direction:column; gap:4px; background:var(--bg); }
+.cal-cell:hover { border-color:var(--border2); background:var(--bg3); }
+.cal-cell.other-month { opacity:0.3; cursor:default; }
+.cal-cell.other-month:hover { background:var(--bg); border-color:var(--border); }
+.cal-cell.today { border-color:var(--ink); }
+.cal-cell.selected { background:var(--bg4); border-color:var(--ink); }
+.cal-daynum { font-family:var(--mono); font-size:10px; color:var(--text2); }
+.cal-dots { display:flex; gap:2px; flex-wrap:wrap; }
+.cal-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; }
+.cal-dot.alta { background:var(--red); } .cal-dot.media { background:var(--amber); } .cal-dot.baja { background:var(--blue); }
+.pend-tabs { display:flex; gap:5px; padding:12px 16px 0; flex-wrap:wrap; }
+.pend-tab { padding:6px 12px; border-radius:5px; border:1px solid var(--border2); background:var(--bg3); color:var(--text3); font-family:var(--mono); font-size:9px; text-transform:uppercase; letter-spacing:0.06em; cursor:pointer; transition:all 0.15s; }
+.pend-tab:hover { color:var(--text2); border-color:var(--ink); }
+.pend-tab.active { background:var(--ink); color:var(--card); border-color:var(--ink); }
+.pend-list { padding:6px 16px 16px; display:flex; flex-direction:column; gap:8px; min-height:60px; }
+.pend-item { display:flex; align-items:flex-start; gap:10px; padding:10px 12px; background:var(--bg3); border:1px solid var(--border); border-radius:var(--r); }
+.pend-item.done { opacity:0.5; }
+.pend-check { width:18px; height:18px; border-radius:4px; border:1px solid var(--border2); background:var(--card); cursor:pointer; flex-shrink:0; margin-top:2px; display:flex; align-items:center; justify-content:center; font-size:11px; color:#fff; padding:0; }
+.pend-check.on { background:var(--green); border-color:var(--green); }
+.pend-main { flex:1; min-width:0; }
+.pend-title { font-family:var(--serif); font-size:13px; color:var(--ink); line-height:1.4; }
+.pend-item.done .pend-title { text-decoration:line-through; }
+.pend-meta { font-family:var(--mono); font-size:9px; color:var(--text3); margin-top:5px; display:flex; gap:7px; flex-wrap:wrap; align-items:center; }
+.pend-desc { font-family:var(--serif); font-size:11.5px; color:var(--text2); margin-top:5px; line-height:1.55; }
+.pend-actions { display:flex; gap:4px; flex-shrink:0; }
+.pbadge { font-family:var(--mono); font-size:8px; text-transform:uppercase; padding:2px 6px; border-radius:3px; letter-spacing:0.05em; }
+.pbadge.alta  { background:var(--red-dim);   color:var(--red);   border:1px solid var(--red-bd); }
+.pbadge.media { background:var(--amber-dim); color:var(--amber); border:1px solid var(--amber-bd); }
+.pbadge.baja  { background:var(--blue-dim);  color:var(--blue);  border:1px solid var(--blue-bd); }
+.pbadge.vencido { background:var(--red-dim); color:var(--red); border:1px solid var(--red-bd); }
+
 /* MODAL */
 .overlay { position:fixed; inset:0; z-index:200; background:rgba(245,241,234,0.8); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; padding:20px; }
 .overlay.open { display:flex; }
@@ -761,6 +803,9 @@ textarea { resize:vertical; min-height:76px; line-height:1.6; font-family:var(--
   .modal { max-width:100%; border-radius:16px 16px 0 0; }
   .overlay { align-items:flex-end; padding:0; }
   .dg { grid-template-columns:1fr 1fr; gap:10px; }
+  .cal-cell { min-height:38px; padding:3px; }
+  .cal-daynum { font-size:9px; }
+  .pend-header { flex-direction:column; align-items:stretch; }
 }
 
 .bottom-nav { display:none; }
@@ -869,6 +914,7 @@ textarea { resize:vertical; min-height:76px; line-height:1.6; font-family:var(--
     <div class="page-nav-label">Vista</div>
     <div class="sidebar-page-nav">
       <button class="page-nav-item" onclick="setPage('dashboard')" data-page="dashboard">Dashboard</button>
+      <button class="page-nav-item" onclick="setPage('pendientes')" data-page="pendientes">Pendientes</button>
       <button class="page-nav-item" onclick="setPage('registro')"  data-page="registro">+ Nuevo Trade</button>
       <button class="page-nav-item" onclick="setPage('historial')" data-page="historial">Historial</button>
       <button class="page-nav-item" onclick="setPage('calc')"      data-page="calc">Calculadora</button>
@@ -910,6 +956,43 @@ textarea { resize:vertical; min-height:76px; line-height:1.6; font-family:var(--
         <div class="grid2" id="t-row2"></div>
         <div class="grid3" id="t-row3"></div>
         <div id="summary-wrap"></div>
+      </div>
+
+      <!-- PENDIENTES -->
+      <div id="view-pendientes" class="view">
+        <div class="pend-header">
+          <div>
+            <div class="calc-title">Pendientes</div>
+            <div class="calc-sub">Calendario y recordatorios</div>
+          </div>
+          <button class="btn btn-primary" onclick="openNewPend()">+ Nuevo Pendiente</button>
+        </div>
+
+        <div class="pend-today-card" id="pend-today-card"></div>
+
+        <div class="grid2" style="align-items:start">
+          <div class="sc">
+            <div class="sc-head">
+              <div class="cal-head-bar">
+                <button class="cal-nav-btn" onclick="calNav(-1)">&#8249;</button>
+                <span class="cal-month-label" id="cal-month-label"></span>
+                <button class="cal-nav-btn" onclick="calNav(1)">&#8250;</button>
+              </div>
+            </div>
+            <div class="cal-grid" id="cal-grid"></div>
+          </div>
+          <div class="sc">
+            <div class="sc-head" id="pend-list-title">Pendientes</div>
+            <div class="pend-tabs">
+              <button class="pend-tab" data-scope="dia" onclick="setPendScope('dia')">Dia</button>
+              <button class="pend-tab" data-scope="semana" onclick="setPendScope('semana')">Semana</button>
+              <button class="pend-tab" data-scope="mes" onclick="setPendScope('mes')">Mes</button>
+              <button class="pend-tab" data-scope="vencidos" onclick="setPendScope('vencidos')">Vencidos</button>
+              <button class="pend-tab" data-scope="todos" onclick="setPendScope('todos')">Todos</button>
+            </div>
+            <div class="pend-list" id="pend-list"></div>
+          </div>
+        </div>
       </div>
 
       <!-- REGISTRO -->
@@ -1190,6 +1273,7 @@ textarea { resize:vertical; min-height:76px; line-height:1.6; font-family:var(--
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav" id="bottom-nav">
   <button class="bn-item" data-page="dashboard" onclick="setPage('dashboard')"><div class="bn-icon">&#9783;</div><span class="bn-label">Stats</span></button>
+  <button class="bn-item" data-page="pendientes" onclick="setPage('pendientes')"><div class="bn-icon">&#9745;</div><span class="bn-label">Pend.</span></button>
   <button class="bn-item" data-page="registro"  onclick="setPage('registro')"><div class="bn-icon">+</div><span class="bn-label">Trade</span></button>
   <button class="bn-item" data-page="historial" onclick="setPage('historial')"><div class="bn-icon">&#9776;</div><span class="bn-label">History</span></button>
   <button class="bn-item" data-page="calc"      onclick="setPage('calc')"><div class="bn-icon">&#x25A2;</div><span class="bn-label">Calc</span></button>
@@ -1220,6 +1304,36 @@ textarea { resize:vertical; min-height:76px; line-height:1.6; font-family:var(--
       <div style="display:flex;justify-content:flex-end;gap:10px">
         <button class="btn btn-ghost" onclick="closeMod('modal-newbt')">Cancelar</button>
         <button class="btn btn-primary" onclick="createBT()">Crear Backtest</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PENDIENTE MODAL -->
+<div class="overlay" id="modal-pend" onclick="closeMod('modal-pend',event)">
+  <div class="modal" style="max-width:480px">
+    <div class="mhead">
+      <div class="mtitle" id="pend-modal-title">Nuevo Pendiente</div>
+      <button class="mclose" onclick="closeMod('modal-pend')">&#215;</button>
+    </div>
+    <div style="padding:20px 24px">
+      <div class="fg" style="margin-bottom:14px"><label class="fl">Titulo <em>*</em></label><input type="text" id="pend-titulo" placeholder="Ej: Revisar journal de la semana"></div>
+      <div class="fg2" style="margin-bottom:14px">
+        <div class="fg"><label class="fl">Fecha <em>*</em></label><input type="date" id="pend-fecha"></div>
+        <div class="fg"><label class="fl">Hora</label><input type="text" id="pend-hora" placeholder="10:00" maxlength="5"></div>
+      </div>
+      <div class="fg" style="margin-bottom:14px"><label class="fl">Prioridad</label>
+        <div class="tg-group">
+          <button class="tg sel" data-val="alta" style="color:var(--red)" onclick="togPend('alta',this)">Alta</button>
+          <button class="tg sel" data-val="media" style="color:var(--amber)" onclick="togPend('media',this)">Media</button>
+          <button class="tg sel" data-val="baja" style="color:var(--blue)" onclick="togPend('baja',this)">Baja</button>
+        </div>
+        <input type="hidden" id="pend-prioridad" value="media">
+      </div>
+      <div class="fg" style="margin-bottom:14px"><label class="fl">Descripcion</label><textarea id="pend-desc" placeholder="Detalles del pendiente..."></textarea></div>
+      <div style="display:flex;justify-content:flex-end;gap:10px">
+        <button class="btn btn-ghost" onclick="closeMod('modal-pend')">Cancelar</button>
+        <button class="btn btn-primary" onclick="savePend()">Guardar</button>
       </div>
     </div>
   </div>
@@ -1260,6 +1374,12 @@ let imgCount    = 2;
 let importData  = null;
 let importMode  = 'existing';
 let editBTId    = null;
+
+let pendientesCache  = [];
+let calDate           = new Date();
+let selectedPendDate  = todayISO();
+let pendScope         = 'dia';
+let editPendId        = null;
 
 let calcInst = 'NAS100';
 let calcProb = 'high';
@@ -1308,7 +1428,7 @@ async function loadApp() {
   document.getElementById('app').classList.remove('app-hidden');
   document.getElementById('sidebar-email').textContent = currentUser.email;
 
-  await loadBacktests();
+  await Promise.all([loadBacktests(), loadPendientes()]);
   showLoading(false);
 
   if (backtests.length > 0) {
@@ -1356,7 +1476,7 @@ async function doRegister() {
 
 async function doLogout() {
   await sb.auth.signOut();
-  backtests=[]; tradesCache={}; activeBT=null;
+  backtests=[]; tradesCache={}; activeBT=null; pendientesCache=[];
 }
 
 function showMsg(el, text, type) {
@@ -1523,6 +1643,218 @@ async function deleteTrade(id) {
 }
 
 // ═══════════════════════════════════════════════════
+// PENDIENTES — Supabase
+// ═══════════════════════════════════════════════════
+async function loadPendientes() {
+  const { data, error } = await sb.from('pendientes')
+    .select('*')
+    .order('fecha', { ascending: true })
+    .order('hora', { ascending: true });
+  pendientesCache = error ? [] : (data || []);
+}
+
+function renderPendientes() {
+  renderTodayCard();
+  renderCalendar();
+  renderPendList();
+}
+
+function pendItemHTML(p) {
+  const vencido = !p.completado && p.fecha < todayISO();
+  return `<div class="pend-item ${p.completado?'done':''}">
+    <button class="pend-check ${p.completado?'on':''}" onclick="togglePendDone('${p.id}',${!!p.completado})" title="Marcar como completado">${p.completado?'&#10003;':''}</button>
+    <div class="pend-main">
+      <div class="pend-title">${escapeHtml(p.titulo)}</div>
+      <div class="pend-meta">
+        <span class="pbadge ${p.prioridad||'media'}">${p.prioridad||'media'}</span>
+        ${vencido?'<span class="pbadge vencido">Vencido</span>':''}
+        ${p.hora?`<span>${escapeHtml(p.hora)}</span>`:''}
+        <span>${p.fecha}</span>
+      </div>
+      ${p.descripcion?`<div class="pend-desc">${escapeHtml(p.descripcion)}</div>`:''}
+    </div>
+    <div class="pend-actions">
+      <button class="ib v" onclick="editPend('${p.id}')" title="Editar" style="font-size:10px">&#9998;</button>
+      <button class="ib" onclick="deletePend('${p.id}')" title="Eliminar">&#215;</button>
+    </div>
+  </div>`;
+}
+
+function renderTodayCard() {
+  const t = todayISO();
+  const items = pendientesCache.filter(p=>p.fecha===t).sort((a,b)=>(a.hora||'99:99').localeCompare(b.hora||'99:99'));
+  const pend = items.filter(p=>!p.completado).length;
+  document.getElementById('pend-today-card').innerHTML = `
+    <div class="pend-today-head">
+      <span class="summary-hd-title">Hoy &middot; ${fmtLarga(t)}</span>
+      <span class="summary-hd-badge">${pend} pendiente${pend===1?'':'s'}</span>
+    </div>
+    <div class="pend-today-body">
+      ${items.length ? items.map(pendItemHTML).join('') : `<div style="font-family:var(--serif);font-style:italic;color:var(--text3);font-size:13px;padding:4px 0">Sin pendientes para hoy.</div>`}
+    </div>`;
+}
+
+function renderCalendar() {
+  const y=calDate.getFullYear(), m=calDate.getMonth();
+  const meses=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  document.getElementById('cal-month-label').textContent = `${meses[m]} ${y}`;
+  const first = new Date(y,m,1);
+  const startOffset = (first.getDay()===0 ? 6 : first.getDay()-1); // semana inicia en Lunes
+  const daysInMonth = new Date(y,m+1,0).getDate();
+  const daysInPrevMonth = new Date(y,m,0).getDate();
+  const cells=[];
+  for (let i=0;i<startOffset;i++) cells.push({ dnum: daysInPrevMonth-startOffset+1+i, iso:null, other:true });
+  for (let d=1; d<=daysInMonth; d++) cells.push({ dnum:d, iso:`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`, other:false });
+  let extra=1;
+  while (cells.length%7!==0) cells.push({ dnum: extra++, iso:null, other:true });
+
+  const t = todayISO();
+  const dow=['Lun','Mar','Mie','Jue','Vie','Sab','Dom'];
+  let html = dow.map(d=>`<div class="cal-dow">${d}</div>`).join('');
+  html += cells.map(c=>{
+    if (c.other) return `<div class="cal-cell other-month"><div class="cal-daynum">${c.dnum}</div></div>`;
+    const dayItems = pendientesCache.filter(p=>p.fecha===c.iso);
+    const prios = [...new Set(dayItems.map(p=>p.prioridad||'media'))].slice(0,4);
+    const dots = prios.map(pr=>`<span class="cal-dot ${pr}"></span>`).join('');
+    const cls=['cal-cell'];
+    if (c.iso===t) cls.push('today');
+    if (c.iso===selectedPendDate) cls.push('selected');
+    return `<div class="${cls.join(' ')}" onclick="selectCalDay('${c.iso}')">
+      <div class="cal-daynum">${c.dnum}</div>
+      <div class="cal-dots">${dots}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('cal-grid').innerHTML = html;
+}
+
+function calNav(delta) {
+  calDate = new Date(calDate.getFullYear(), calDate.getMonth()+delta, 1);
+  renderCalendar();
+  if (pendScope==='mes') renderPendList();
+}
+
+function selectCalDay(iso) {
+  if (!iso) return;
+  selectedPendDate = iso;
+  pendScope = 'dia';
+  renderCalendar();
+  renderPendList();
+}
+
+function setPendScope(scope) {
+  pendScope = scope;
+  renderPendList();
+}
+
+function renderPendList() {
+  const t = todayISO();
+  let items=[], title='';
+  if (pendScope==='dia') {
+    items = pendientesCache.filter(p=>p.fecha===selectedPendDate);
+    title = fmtLarga(selectedPendDate);
+  } else if (pendScope==='semana') {
+    const [mon,sun] = weekRange(selectedPendDate);
+    items = pendientesCache.filter(p=>p.fecha>=mon && p.fecha<=sun);
+    title = `Semana del ${mon} al ${sun}`;
+  } else if (pendScope==='mes') {
+    const y=calDate.getFullYear(), m=calDate.getMonth();
+    items = pendientesCache.filter(p=>{
+      const py=+p.fecha.slice(0,4), pm=+p.fecha.slice(5,7)-1;
+      return py===y && pm===m;
+    });
+    title = document.getElementById('cal-month-label').textContent;
+  } else if (pendScope==='vencidos') {
+    items = pendientesCache.filter(p=>!p.completado && p.fecha<t);
+    title = 'Vencidos';
+  } else {
+    items = pendientesCache;
+    title = 'Todos los pendientes';
+  }
+
+  items = [...items].sort((a,b)=>(a.fecha+(a.hora||'99:99')).localeCompare(b.fecha+(b.hora||'99:99')));
+  document.getElementById('pend-list-title').textContent = title;
+  document.querySelectorAll('.pend-tab').forEach(el=>el.classList.toggle('active', el.dataset.scope===pendScope));
+  document.getElementById('pend-list').innerHTML = items.length
+    ? items.map(pendItemHTML).join('')
+    : `<div style="text-align:center;padding:32px 8px;font-family:var(--serif);font-style:italic;color:var(--text3)">Sin pendientes en este rango</div>`;
+}
+
+function openNewPend(dateIso) {
+  editPendId = null;
+  document.getElementById('pend-modal-title').textContent = 'Nuevo Pendiente';
+  document.getElementById('pend-titulo').value = '';
+  document.getElementById('pend-fecha').value = dateIso || selectedPendDate || todayISO();
+  document.getElementById('pend-hora').value = '';
+  document.getElementById('pend-desc').value = '';
+  setPendPriorityValue('media');
+  document.getElementById('modal-pend').classList.add('open');
+}
+
+function editPend(id) {
+  const p = pendientesCache.find(x=>x.id===id);
+  if (!p) return;
+  editPendId = id;
+  document.getElementById('pend-modal-title').textContent = 'Editar Pendiente';
+  document.getElementById('pend-titulo').value = p.titulo||'';
+  document.getElementById('pend-fecha').value = p.fecha||'';
+  document.getElementById('pend-hora').value = p.hora||'';
+  document.getElementById('pend-desc').value = p.descripcion||'';
+  setPendPriorityValue(p.prioridad||'media');
+  document.getElementById('modal-pend').classList.add('open');
+}
+
+function setPendPriorityValue(val) {
+  document.getElementById('pend-prioridad').value = val;
+  document.querySelectorAll('#modal-pend .tg').forEach(b=>b.classList.toggle('on', b.dataset.val===val));
+}
+
+function togPend(val, btn) {
+  document.getElementById('pend-prioridad').value = val;
+  btn.parentElement.querySelectorAll('.tg').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+
+async function savePend() {
+  const titulo = document.getElementById('pend-titulo').value.trim();
+  const fecha  = document.getElementById('pend-fecha').value;
+  if (!titulo) { toast('Ingresa un titulo','err'); return; }
+  if (!fecha)  { toast('Ingresa la fecha','err'); return; }
+  const row = {
+    user_id:     currentUser.id,
+    titulo,
+    fecha,
+    hora:        document.getElementById('pend-hora').value.trim(),
+    prioridad:   document.getElementById('pend-prioridad').value || 'media',
+    descripcion: document.getElementById('pend-desc').value.trim(),
+  };
+  let error;
+  if (editPendId) {
+    ({ error } = await sb.from('pendientes').update(row).eq('id', editPendId));
+  } else {
+    ({ error } = await sb.from('pendientes').insert(row));
+  }
+  if (error) { toast('Error: '+error.message,'err'); return; }
+  toast(editPendId ? 'Pendiente actualizado' : 'Pendiente guardado','ok');
+  closeMod('modal-pend');
+  await loadPendientes();
+  renderPendientes();
+}
+
+async function togglePendDone(id, current) {
+  const { error } = await sb.from('pendientes').update({ completado: !current }).eq('id', id);
+  if (error) { toast('Error: '+error.message,'err'); return; }
+  await loadPendientes();
+  renderPendientes();
+}
+
+async function deletePend(id) {
+  if (!confirm('Eliminar este pendiente?')) return;
+  await sb.from('pendientes').delete().eq('id', id);
+  await loadPendientes();
+  renderPendientes();
+}
+
+// ═══════════════════════════════════════════════════
 // SIDEBAR
 // ═══════════════════════════════════════════════════
 function renderSidebar() {
@@ -1566,6 +1898,7 @@ function setPage(page) {
   if (page==='historial'  && activeBT) renderHist();
   if (page==='calc') { setProb(calcProb); calcContracts(); }
   if (page==='import') populateImportBTSelect();
+  if (page==='pendientes') renderPendientes();
 }
 
 // ═══════════════════════════════════════════════════
@@ -1951,6 +2284,28 @@ function tbl(title,headers,rows){if(!rows||!rows.length)return`<div class="sc"><
 function usd(n){return'$'+(Math.abs(+n)||0).toLocaleString('es-MX',{minimumFractionDigits:0,maximumFractionDigits:0});}
 
 function getDia(f){const d=['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];return d[new Date(f+'T12:00:00').getDay()];}
+
+function todayISO(){ return new Date().toISOString().split('T')[0]; }
+
+function fmtLarga(iso){
+  if(!iso) return '';
+  const dias=['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
+  const meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const d=new Date(iso+'T12:00:00');
+  return `${dias[d.getDay()]} ${d.getDate()} de ${meses[d.getMonth()]}`;
+}
+
+function weekRange(iso){
+  const d=new Date(iso+'T12:00:00');
+  const day=d.getDay();
+  const diffToMon=(day===0?-6:1-day);
+  const mon=new Date(d); mon.setDate(d.getDate()+diffToMon);
+  const sun=new Date(mon); sun.setDate(mon.getDate()+6);
+  const f=x=>x.toISOString().split('T')[0];
+  return [f(mon), f(sun)];
+}
+
+function escapeHtml(s){ return (s||'').toString().replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
 function tog(field,val,btn){document.getElementById('f-'+field).value=val;btn.parentElement.querySelectorAll('.tg').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
 
